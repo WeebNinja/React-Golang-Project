@@ -19,16 +19,16 @@ const DeleteStudents = ({ onClose, studentID }) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log("Student deleted successfully");
+      console.log("ลบนักเรียนเรียบร้อยแล้ว");
       setIsDeleted(true);
-      // onClose(); // Close the modal after confirming deletion
+      // onClose(); // ปิดโมดัลหลังจากยืนยันการลบ
     } catch (error) {
-      console.error("Error deleting student:", error.message);
+      console.error("เกิดข้อผิดพลาดในการลบนักเรียน:", error.message);
     }
   };
 
   const handleOKClick = () => {
-    window.location.reload(); // Refresh the page
+    window.location.reload(); // รีเฟรชหน้า
   };
 
   return (
@@ -40,33 +40,33 @@ const DeleteStudents = ({ onClose, studentID }) => {
               icon={faCheckCircle}
               className="text-5xl text-green-500 mb-4"
             />
-            <h2 className="text-2xl font-bold mb-4">Deleted!</h2>
-            <p className="text-lg">Student has been deleted successfully.</p>
+            <h2 className="text-2xl font-bold mb-4">ลบแล้ว!</h2>
+            <p className="text-lg">นักเรียนถูกลบออกเรียบร้อยแล้ว</p>
             <button
               onClick={handleOKClick}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              OK
+              ตกลง
             </button>
           </>
         ) : (
           <>
-            <h2 className="text-2xl font-bold mb-4">Confirm Deletion</h2>
+            <h2 className="text-2xl font-bold mb-4">ยืนยันการลบ</h2>
             <p className="text-lg mb-4">
-              Are you sure you want to delete this student?
+              คุณแน่ใจหรือไม่ว่าต้องการลบนักเรียนคนนี้?
             </p>
             <div className="flex justify-end">
               <button
                 onClick={handleConfirmDelete}
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2"
               >
-                Confirm
+                ยืนยัน
               </button>
               <button
                 onClick={onClose}
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
               >
-                Cancel
+                ยกเลิก
               </button>
             </div>
           </>

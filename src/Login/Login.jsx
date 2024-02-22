@@ -26,14 +26,14 @@ const Login = () => {
       if (response.status === 200) {
         setShowSuccessModal(true);
       } else {
-        setError("Invalid email or password. Please try again.");
+        setError("อีเมลหรือรหัสผ่านไม่ถูกต้อง โปรดลองอีกครั้ง");
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        setError("Invalid email or password. Please try again.");
+        setError("อีเมลหรือรหัสผ่านไม่ถูกต้อง โปรดลองอีกครั้ง");
       } else {
-        console.error("Error:", error);
-        setError("Failed to authenticate. Please try again.");
+        console.error("เกิดข้อผิดพลาด:", error);
+        setError("การยืนยันตัวตนล้มเหลว โปรดลองอีกครั้ง");
       }
     }
   };
@@ -56,31 +56,31 @@ const Login = () => {
           className="mx-auto mb-4 rounded-full w-64 h-64"
         />
         <h1 className="text-3xl font-bold mb-4 text-center text-gray-800">
-          Login
+          เข้าสู่ระบบ
         </h1>
         {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
         <form>
           <div className="mb-3">
             <label className="block text-gray-700 text-sm font-semibold mb-2">
-              Email
+              อีเมล
             </label>
             <input
               type="email"
               className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
-              placeholder="Enter your email"
+              placeholder="กรอกอีเมลของคุณ"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="mb-3">
             <label className="block text-gray-700 text-sm font-semibold mb-2">
-              Password
+              รหัสผ่าน
             </label>
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
                 className="w-full border rounded-md py-2 px-3 focus:outline-none focus:ring focus:border-blue-300"
-                placeholder="Enter your password"
+                placeholder="กรอกรหัสผ่านของคุณ"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -98,12 +98,12 @@ const Login = () => {
             className="btn bg-blue-600 text-white font-semibold px-4 py-2 rounded w-full hover:bg-blue-700"
             onClick={handleLogin}
           >
-            Login
+            เข้าสู่ระบบ
           </button>
           <p className="text-center mt-4">
-            Don't have an account?{" "}
+            ยังไม่มีบัญชี?{" "}
             <Link to="/register" className="text-blue-600 hover:underline">
-              Register here
+              ลงทะเบียนที่นี่
             </Link>
           </p>
         </form>
@@ -115,13 +115,13 @@ const Login = () => {
               icon={faCheckCircle}
               className="text-5xl text-green-500 mb-4"
             />
-            <h2 className="text-2xl font-bold mb-4">Login Successful</h2>
-            <p className="text-lg">You have successfully logged in.</p>
+            <h2 className="text-2xl font-bold mb-4">เข้าสู่ระบบสำเร็จ</h2>
+            <p className="text-lg">คุณเข้าสู่ระบบเรียบร้อยแล้ว</p>
             <button
               onClick={handleCloseModal}
               className="btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              OK
+              ตกลง
             </button>
           </div>
         </div>

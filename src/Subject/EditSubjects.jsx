@@ -31,10 +31,10 @@ const EditSubjects = ({ subject, onClose }) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const updatedSubject = await response.json();
-      console.log("Updated subject data:", updatedSubject);
+      console.log("ข้อมูลวิชาที่อัปเดต:", updatedSubject);
       setShowSuccessModal(true);
     } catch (error) {
-      console.error("Error updating subject:", error.message);
+      console.error("ข้อผิดพลาดในการอัปเดตวิชา:", error.message);
     }
   };
 
@@ -47,11 +47,11 @@ const EditSubjects = ({ subject, onClose }) => {
     <div>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
         <div className="bg-white p-8 rounded-md">
-          <h2 className="text-2xl font-bold mb-4">Edit Subject</h2>
+          <h2 className="text-2xl font-bold mb-4">แก้ไขวิชา</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="Name" className="block font-semibold mb-1">
-                Name:
+                ชื่อ:
               </label>
               <input
                 type="text"
@@ -65,7 +65,7 @@ const EditSubjects = ({ subject, onClose }) => {
             </div>
             <div className="mb-4 flex flex-col">
               <label htmlFor="Description" className="block font-semibold mb-1">
-                Description:
+                คำอธิบาย:
               </label>
               <textarea
                 id="Description"
@@ -82,14 +82,14 @@ const EditSubjects = ({ subject, onClose }) => {
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
               >
-                Save
+                บันทึก
               </button>
               <button
                 type="button"
                 onClick={onClose}
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
               >
-                Cancel
+                ยกเลิก
               </button>
             </div>
           </form>
@@ -103,13 +103,13 @@ const EditSubjects = ({ subject, onClose }) => {
               icon={faCheckCircle}
               className="text-5xl text-green-500 mb-4"
             />
-            <h2 className="text-2xl font-bold mb-4">Success!</h2>
-            <p className="text-lg">Data has been updated successfully.</p>
+            <h2 className="text-2xl font-bold mb-4">สำเร็จ!</h2>
+            <p className="text-lg">ข้อมูลได้รับการอัปเดตเรียบร้อยแล้ว</p>
             <button
               onClick={handleCloseModal}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              OK
+              ตกลง
             </button>
           </div>
         </div>

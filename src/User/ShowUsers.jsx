@@ -42,8 +42,8 @@ const ShowUser = () => {
     setShowEditModal(true);
   };
 
-  const handleDelete = (userID) => {
-    setUserIDToDelete(userID);
+  const handleDelete = (userEmail) => {
+    setUserIDToDelete(userEmail);
     setShowDeleteModal(true);
   };
 
@@ -77,11 +77,11 @@ const ShowUser = () => {
 
   return (
     <div className="max-w-screen-md mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 text-center">Users List</h1>
+      <h1 className="text-3xl font-bold mb-4 text-center">รายชื่อผู้ใช้</h1>
       <div className="flex items-center border border-gray-300 rounded p-1 mb-5">
         <input
           type="text"
-          placeholder="Search by Name or Email"
+          placeholder="ค้นหาตามชื่อหรืออีเมล"
           className="p-2 flex-1 outline-none"
           value={searchTerm}
           onChange={handleSearch}
@@ -93,16 +93,16 @@ const ShowUser = () => {
         onClick={handleInsert}
         className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mb-4"
       >
-        <HiPlusCircle className="inline-block w-4 h-4 mr-1" /> Insert
+        <HiPlusCircle className="inline-block w-4 h-4 mr-1" /> เพิ่ม
       </button>
-      {isLoading && <p className="text-gray-600">Loading...</p>}
-      {error && <p className="text-red-600">Error: {error}</p>}
+      {isLoading && <p className="text-gray-600">กำลังโหลด...</p>}
+      {error && <p className="text-red-600">ข้อผิดพลาด: {error}</p>}
       <table className="w-full mt-4 border-collapse">
         <thead>
           <tr className="bg-gray-200">
-            <th className="border p-2">Name</th>
-            <th className="border p-2">Email</th>
-            <th className="border p-2">Actions</th>
+            <th className="border p-2">ชื่อ</th>
+            <th className="border p-2">อีเมล</th>
+            <th className="border p-2">การดำเนินการ</th>
           </tr>
         </thead>
         <tbody>
@@ -115,13 +115,13 @@ const ShowUser = () => {
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
                   onClick={() => handleEdit(user)}
                 >
-                  <HiPencilAlt className="inline-block w-4 h-4 mr-1" /> Edit
+                  <HiPencilAlt className="inline-block w-4 h-4 mr-1" /> แก้ไข
                 </button>
                 <button
                   className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => handleDelete(user.ID)}
+                  onClick={() => handleDelete(user.Email)}
                 >
-                  <HiTrash className="inline-block w-4 h-4 mr-1" /> Delete
+                  <HiTrash className="inline-block w-4 h-4 mr-1" /> ลบ
                 </button>
               </td>
             </tr>
@@ -149,7 +149,7 @@ const ShowUser = () => {
       )}
       {showDeleteModal && (
         <DeleteUsers
-          userID={userIDToDelete}
+          userEmail={userIDToDelete}
           onClose={() => setShowDeleteModal(false)}
         />
       )}

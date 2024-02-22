@@ -35,10 +35,10 @@ const EditTeachers = ({ teacher, onClose }) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const updatedTeacher = await response.json();
-      console.log("Updated teacher data:", updatedTeacher);
+      console.log("ข้อมูลครูถูกอัปเดต:", updatedTeacher);
       setShowSuccessModal(true);
     } catch (error) {
-      console.error("Error updating teacher:", error.message);
+      console.error("ข้อผิดพลาดในการอัปเดตครู:", error.message);
     }
   };
 
@@ -51,11 +51,11 @@ const EditTeachers = ({ teacher, onClose }) => {
     <div>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
         <div className="bg-white p-8 rounded-md">
-          <h2 className="text-2xl font-bold mb-4">Edit Teacher</h2>
+          <h2 className="text-2xl font-bold mb-4">แก้ไขครู</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="firstName" className="block font-semibold mb-1">
-                First Name:
+                ชื่อ:
               </label>
               <input
                 type="text"
@@ -69,7 +69,7 @@ const EditTeachers = ({ teacher, onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="lastName" className="block font-semibold mb-1">
-                Last Name:
+                นามสกุล:
               </label>
               <input
                 type="text"
@@ -83,7 +83,7 @@ const EditTeachers = ({ teacher, onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="age" className="block font-semibold mb-1">
-                Age:
+                อายุ:
               </label>
               <input
                 type="number"
@@ -97,7 +97,7 @@ const EditTeachers = ({ teacher, onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="subject" className="block font-semibold mb-1">
-                Subject:
+                วิชา:
               </label>
               <input
                 type="text"
@@ -114,14 +114,14 @@ const EditTeachers = ({ teacher, onClose }) => {
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
               >
-                Save
+                บันทึก
               </button>
               <button
                 type="button"
                 onClick={onClose}
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
               >
-                Cancel
+                ยกเลิก
               </button>
             </div>
           </form>
@@ -135,13 +135,13 @@ const EditTeachers = ({ teacher, onClose }) => {
               icon={faCheckCircle}
               className="text-5xl text-green-500 mb-4"
             />
-            <h2 className="text-2xl font-bold mb-4">Success!</h2>
-            <p className="text-lg">Data has been updated successfully.</p>
+            <h2 className="text-2xl font-bold mb-4">สำเร็จ!</h2>
+            <p className="text-lg">ข้อมูลถูกอัปเดตเรียบร้อยแล้ว</p>
             <button
               onClick={handleCloseModal}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              OK
+              ตกลง
             </button>
           </div>
         </div>

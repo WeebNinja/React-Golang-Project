@@ -5,7 +5,7 @@ import { faCheckCircle, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-ic
 const EditUsers = ({ user, onClose }) => {
   const [editedUser, setEditedUser] = useState(user);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-  const [showPassword, setShowPassword] = useState(false); // เพิ่ม state เพื่อเก็บสถานะของการแสดงรหัสผ่าน
+  const [showPassword, setShowPassword] = useState(false); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,10 +29,10 @@ const EditUsers = ({ user, onClose }) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const updatedUser = await response.json();
-      console.log("Updated user data:", updatedUser);
+      console.log("ข้อมูลผู้ใช้ที่อัปเดต:", updatedUser);
       setShowSuccessModal(true);
     } catch (error) {
-      console.error("Error updating user:", error.message);
+      console.error("เกิดข้อผิดพลาดในการอัปเดตผู้ใช้:", error.message);
     }
   };
 
@@ -42,18 +42,18 @@ const EditUsers = ({ user, onClose }) => {
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Toggle the state to show or hide password
+    setShowPassword(!showPassword); 
   };
 
   return (
     <div>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
         <div className="bg-white p-8 rounded-md">
-          <h2 className="text-2xl font-bold mb-4">Edit User</h2>
+          <h2 className="text-2xl font-bold mb-4">แก้ไขผู้ใช้</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="Name" className="block font-semibold mb-1">
-                Name:
+                ชื่อ:
               </label>
               <input
                 type="text"
@@ -67,7 +67,7 @@ const EditUsers = ({ user, onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="Email" className="block font-semibold mb-1">
-                Email:
+                อีเมล:
               </label>
               <input
                 type="Email"
@@ -81,11 +81,11 @@ const EditUsers = ({ user, onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="Password" className="block font-semibold mb-1">
-                Password:
+                รหัสผ่าน:
               </label>
               <div className="relative">
                 <input
-                  type={showPassword ? "text" : "password"} // ใช้ state เพื่อกำหนดประเภทของ input รหัสผ่าน
+                  type={showPassword ? "text" : "password"} 
                   id="Password"
                   name="Password"
                   value={editedUser.Password}
@@ -93,7 +93,6 @@ const EditUsers = ({ user, onClose }) => {
                   className="border border-gray-300 rounded-md px-4 py-2 w-full pr-10"
                   required
                 />
-                {/* เพิ่มปุ่มเปิด-ปิด รหัสผ่าน */}
                 <button
                   type="button"
                   className="absolute inset-y-0 right-0 flex items-center px-3 bg-transparent border-transparent focus:outline-none"
@@ -108,14 +107,14 @@ const EditUsers = ({ user, onClose }) => {
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
               >
-                Save
+                บันทึก
               </button>
               <button
                 type="button"
                 onClick={onClose}
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
               >
-                Cancel
+                ยกเลิก
               </button>
             </div>
           </form>
@@ -129,13 +128,13 @@ const EditUsers = ({ user, onClose }) => {
               icon={faCheckCircle}
               className="text-5xl text-green-500 mb-4"
             />
-            <h2 className="text-2xl font-bold mb-4">Success!</h2>
-            <p className="text-lg">Data has been updated successfully.</p>
+            <h2 className="text-2xl font-bold mb-4">สำเร็จ!</h2>
+            <p className="text-lg">ข้อมูลได้รับการอัปเดตเรียบร้อยแล้ว</p>
             <button
               onClick={handleCloseModal}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              OK
+              ตกลง
             </button>
           </div>
         </div>

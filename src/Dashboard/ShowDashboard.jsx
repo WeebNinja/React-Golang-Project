@@ -39,7 +39,7 @@ const ShowDashboard = () => {
 
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error("เกิดข้อผิดพลาดในการดึงข้อมูล:", error);
       }
     };
 
@@ -48,15 +48,15 @@ const ShowDashboard = () => {
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-3xl font-bold mb-4">Dashboard</h1>
+      <h1 className="text-3xl font-bold mb-4">แดชบอร์ด</h1>
       {loading ? (
-        <p>Loading...</p>
+        <p>กำลังโหลด...</p>
       ) : (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <Link to="/showusers" className="no-underline">
             <div className="bg-blue-200 p-4 rounded-md flex flex-col items-center justify-center shadow-md transform hover:scale-105 transition-transform duration-300">
               <FontAwesomeIcon icon={faUser} className="text-4xl mb-2" />
-              <h2 className="text-xl font-bold mb-2">Users</h2>
+              <h2 className="text-xl font-bold mb-2">ผู้ใช้</h2>
               <p className="text-3xl font-bold">{userCount}</p>
             </div>
           </Link>
@@ -66,14 +66,14 @@ const ShowDashboard = () => {
                 icon={faGraduationCap}
                 className="text-4xl mb-2"
               />
-              <h2 className="text-xl font-bold mb-2">Students</h2>
+              <h2 className="text-xl font-bold mb-2">นักเรียน</h2>
               <p className="text-3xl font-bold">{studentCount}</p>
             </div>
           </Link>
           <Link to="/showsubjects" className="no-underline">
             <div className="bg-yellow-200 p-4 rounded-md flex flex-col items-center justify-center shadow-md transform hover:scale-105 transition-transform duration-300">
               <FontAwesomeIcon icon={faBookOpen} className="text-4xl mb-2" />
-              <h2 className="text-xl font-bold mb-2">Subjects</h2>
+              <h2 className="text-xl font-bold mb-2">วิชา</h2>
               <p className="text-3xl font-bold">{subjectCount}</p>
             </div>
           </Link>
@@ -83,7 +83,7 @@ const ShowDashboard = () => {
                 icon={faChalkboardTeacher}
                 className="text-4xl mb-2"
               />
-              <h2 className="text-xl font-bold mb-2">Teachers</h2>
+              <h2 className="text-xl font-bold mb-2">ครู</h2>
               <p className="text-3xl font-bold">{teacherCount}</p>
             </div>
           </Link>

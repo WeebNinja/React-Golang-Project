@@ -31,10 +31,10 @@ const InsertSubjects = ({ onClose }) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log("New subject inserted successfully");
+      console.log("เพิ่มวิชาใหม่เรียบร้อยแล้ว");
       setShowSuccessModal(true);
     } catch (error) {
-      console.error("Error inserting new subject:", error.message);
+      console.error("ข้อผิดพลาดในการเพิ่มวิชาใหม่:", error.message);
     }
   };
 
@@ -47,11 +47,11 @@ const InsertSubjects = ({ onClose }) => {
     <>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
         <div className="bg-white p-8 rounded-md">
-          <h2 className="text-2xl font-bold mb-4">Insert Subject</h2>
+          <h2 className="text-2xl font-bold mb-4">เพิ่มวิชา</h2>
           <form onSubmit={handleInsert}>
             <div className="mb-4">
               <label htmlFor="name" className="block text-sm font-bold mb-2">
-                Name
+                ชื่อ
               </label>
               <input
                 type="text"
@@ -68,7 +68,7 @@ const InsertSubjects = ({ onClose }) => {
                 htmlFor="description"
                 className="block text-sm font-bold mb-2"
               >
-                Description
+                คำอธิบาย
               </label>
               <input
                 type="text"
@@ -85,13 +85,13 @@ const InsertSubjects = ({ onClose }) => {
                 type="submit"
                 className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
               >
-                Insert
+                เพิ่ม
               </button>
               <button
                 onClick={onClose}
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
               >
-                Cancel
+                ยกเลิก
               </button>
             </div>
           </form>
@@ -104,13 +104,13 @@ const InsertSubjects = ({ onClose }) => {
               icon={faCheckCircle}
               className="text-5xl text-green-500 mb-4"
             />
-            <h2 className="text-2xl font-bold mb-4">Success!</h2>
-            <p className="text-lg">Data added successfully.</p>
+            <h2 className="text-2xl font-bold mb-4">สำเร็จ!</h2>
+            <p className="text-lg">ข้อมูลได้รับการเพิ่มเรียบร้อยแล้ว</p>
             <button
               onClick={handleCloseModal}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              OK
+              ตกลง
             </button>
           </div>
         </div>

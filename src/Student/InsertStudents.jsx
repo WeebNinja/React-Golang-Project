@@ -9,11 +9,11 @@ const InsertStudents = ({ onClose }) => {
     grade: "",
   });
 
-  const [showSuccessModal, setShowSuccessModal] = useState(false); // State to control the visibility of success modal
+  const [showSuccessModal, setShowSuccessModal] = useState(false); // State เพื่อควบคุมการแสดงโมดัลสำเร็จ
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Check if the field is age and convert its value to integer
+    // ตรวจสอบว่าฟิลด์เป็นอายุและแปลงค่าเป็นจำนวนเต็ม
     const newValue = name === "age" ? parseInt(value) : value;
     setFormData({
       ...formData,
@@ -34,31 +34,31 @@ const InsertStudents = ({ onClose }) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log("New student inserted successfully");
-      setShowSuccessModal(true); // Show success modal when data is successfully added
+      console.log("เพิ่มนักเรียนใหม่เรียบร้อยแล้ว");
+      setShowSuccessModal(true); // แสดงโมดัลสำเร็จเมื่อข้อมูลถูกเพิ่มเรียบร้อย
     } catch (error) {
-      console.error("Error inserting new student:", error.message);
+      console.error("เกิดข้อผิดพลาดในการเพิ่มนักเรียนใหม่:", error.message);
     }
   };
 
   const handleCloseModal = () => {
-    setShowSuccessModal(false); // Close the success modal
-    window.location.reload(); // Reload the page
+    setShowSuccessModal(false); // ปิดโมดัลสำเร็จ
+    window.location.reload(); // รีโหลดหน้า
   };
 
   return (
     <>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
         <div className="bg-white p-8 rounded-md">
-          <h2 className="text-2xl font-bold mb-4">Insert Student</h2>
+          <h2 className="text-2xl font-bold mb-4">เพิ่มนักเรียน</h2>
           <form onSubmit={handleInsert}>
-            {/* Form fields for inserting a new student */}
+            {/* ฟอร์มสำหรับการเพิ่มนักเรียนใหม่ */}
             <div className="mb-4">
               <label
                 htmlFor="firstname"
                 className="block text-sm font-bold mb-2"
               >
-                First Name
+                ชื่อ
               </label>
               <input
                 type="text"
@@ -75,7 +75,7 @@ const InsertStudents = ({ onClose }) => {
                 htmlFor="lastname"
                 className="block text-sm font-bold mb-2"
               >
-                Last Name
+                นามสกุล
               </label>
               <input
                 type="text"
@@ -89,7 +89,7 @@ const InsertStudents = ({ onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="age" className="block text-sm font-bold mb-2">
-                Age
+                อายุ
               </label>
               <input
                 type="number"
@@ -103,7 +103,7 @@ const InsertStudents = ({ onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="grade" className="block text-sm font-bold mb-2">
-                Grade
+                เกรด
               </label>
               <input
                 type="text"
@@ -120,19 +120,19 @@ const InsertStudents = ({ onClose }) => {
                 type="submit"
                 className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mr-2"
               >
-                Insert
+                เพิ่ม
               </button>
               <button
                 onClick={onClose}
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
               >
-                Cancel
+                ยกเลิก
               </button>
             </div>
           </form>
         </div>
       </div>
-      {/* Success modal */}
+      {/* โมดัลสำเร็จ */}
       {showSuccessModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
           <div className="bg-white p-8 rounded-md flex flex-col items-center">
@@ -140,13 +140,13 @@ const InsertStudents = ({ onClose }) => {
               icon={faCheckCircle}
               className="text-5xl text-green-500 mb-4"
             />
-            <h2 className="text-2xl font-bold mb-4">Success!</h2>
-            <p className="text-lg">Data add successfully.</p>
+            <h2 className="text-2xl font-bold mb-4">สำเร็จ!</h2>
+            <p className="text-lg">เพิ่มข้อมูลเรียบร้อยแล้ว</p>
             <button
               onClick={handleCloseModal}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              OK
+              ตกลง
             </button>
           </div>
         </div>

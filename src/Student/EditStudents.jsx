@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 const EditStudents = ({ student, onClose }) => {
   const [editedStudent, setEditedStudent] = useState(student);
-  const [showSuccessModal, setShowSuccessModal] = useState(false); // State for showing success modal
+  const [showSuccessModal, setShowSuccessModal] = useState(false); // State สำหรับแสดงโมดัลสำเร็จ
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,30 +29,30 @@ const EditStudents = ({ student, onClose }) => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      // Assuming the server responds with the updated student data,
-      // you can retrieve it and handle it accordingly
+      // ถ้าเซิร์ฟเวอร์ตอบกลับด้วยข้อมูลนักเรียนที่อัปเดตแล้ว
+      // คุณสามารถดึงข้อมูลและจัดการตามที่เหมาะสม
       const updatedStudent = await response.json();
-      console.log("Updated student data:", updatedStudent);
-      setShowSuccessModal(true); // Show success modal
+      console.log("ข้อมูลนักเรียนที่อัปเดต:", updatedStudent);
+      setShowSuccessModal(true); // แสดงโมดัลสำเร็จ
     } catch (error) {
-      console.error("Error updating student:", error.message);
+      console.error("เกิดข้อผิดพลาดในการอัปเดตนักเรียน:", error.message);
     }
   };
 
   const handleCloseModal = () => {
-    setShowSuccessModal(false); // Close the success modal
-    window.location.reload(); // Reload the page
+    setShowSuccessModal(false); // ปิดโมดัลสำเร็จ
+    window.location.reload(); // รีโหลดหน้า
   };
 
   return (
     <div>
       <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
         <div className="bg-white p-8 rounded-md">
-          <h2 className="text-2xl font-bold mb-4">Edit Student</h2>
+          <h2 className="text-2xl font-bold mb-4">แก้ไขนักเรียน</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label htmlFor="firstName" className="block font-semibold mb-1">
-                First Name:
+                ชื่อ:
               </label>
               <input
                 type="text"
@@ -66,7 +66,7 @@ const EditStudents = ({ student, onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="lastName" className="block font-semibold mb-1">
-                Last Name:
+                นามสกุล:
               </label>
               <input
                 type="text"
@@ -80,7 +80,7 @@ const EditStudents = ({ student, onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="age" className="block font-semibold mb-1">
-                Age:
+                อายุ:
               </label>
               <input
                 type="number"
@@ -94,7 +94,7 @@ const EditStudents = ({ student, onClose }) => {
             </div>
             <div className="mb-4">
               <label htmlFor="grade" className="block font-semibold mb-1">
-                Grade:
+                เกรด:
               </label>
               <input
                 type="text"
@@ -111,14 +111,14 @@ const EditStudents = ({ student, onClose }) => {
                 type="submit"
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
               >
-                Save
+                บันทึก
               </button>
               <button
                 type="button"
                 onClick={onClose}
                 className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
               >
-                Cancel
+                ยกเลิก
               </button>
             </div>
           </form>
@@ -132,13 +132,13 @@ const EditStudents = ({ student, onClose }) => {
               icon={faCheckCircle}
               className="text-5xl text-green-500 mb-4"
             />
-            <h2 className="text-2xl font-bold mb-4">Success!</h2>
-            <p className="text-lg">Data has been updated successfully.</p>
+            <h2 className="text-2xl font-bold mb-4">สำเร็จ!</h2>
+            <p className="text-lg">ข้อมูลได้รับการอัปเดตเรียบร้อยแล้ว</p>
             <button
               onClick={handleCloseModal}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
             >
-              OK
+              ตกลง
             </button>
           </div>
         </div>

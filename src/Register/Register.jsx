@@ -44,14 +44,14 @@ const Register = () => {
       if (response.status === 200) {
         setShowSuccessModal(true);
       } else {
-        setError("Registration failed. Please try again.");
+        setError("การลงทะเบียนล้มเหลว โปรดลองอีกครั้ง");
       }
     } catch (error) {
       if (error.response && error.response.status === 401) {
         setError("อีเมลนี้ถูกใช้งานแล้ว กรุณาใช้อีเมลอื่น");
       } else {
-        console.error("Error:", error);
-        setError("Failed to register. Please try again.");
+        console.error("เกิดข้อผิดพลาด:", error);
+        setError("การลงทะเบียนล้มเหลว โปรดลองอีกครั้ง");
       }
     }
   };
@@ -69,7 +69,7 @@ const Register = () => {
     <div className="h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500">
       <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
         <h1 className="text-3xl font-bold mb-4 text-center text-gray-800">
-          Register
+          ลงทะเบียน
         </h1>
         <form>
           <div className="mb-3">
@@ -121,7 +121,7 @@ const Register = () => {
             className="btn bg-blue-600 text-white font-semibold px-4 py-2 rounded w-full hover:bg-blue-700"
             onClick={handleRegister}
           >
-            Register
+            ลงทะเบียน
           </button>
           {error && <p className="text-red-500 mt-2">{error}</p>}
         </form>
